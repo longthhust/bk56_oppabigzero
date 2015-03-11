@@ -7,19 +7,24 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<div>
+		<li><%= link_to "ホームページ", root_path%></li>
+		<li><%= link_to "質問の一覧", questions_path%></li>
+		<% if user_signed_in? %>
+			<li><%= link_to "質問する", new_question_path%></li>
+			<li><%= link_to current_user.email , edit_user_registration_path %></li>
+			<li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+		<% else %>
+			<li><%= link_to "登録する", new_user_registration_path %></li>
+			<li><%= link_to "ログイン", new_user_session_path %></li>
+		<% end %>
+	</div>
 
-	<li><%= link_to "ホームページ", root_path%></li>
-	<% if user_signed_in? %>
-		<li><%= link_to current_user.email , edit_user_registration_path %></li>
-		<li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-	<% else %>
-		<li><%= link_to "登録する", new_user_registration_path %></li>
-		<li><%= link_to "ログイン", new_user_session_path %></li>
-	<% end %>
-
-	<% flash.each do |message_type, message| %>
-    	<div class="alert alert-<%= message_type %>"><%= message %></div>
-    <% end %>
+	<div>
+		<% flash.each do |message_type, message| %>
+	    	<div class="alert alert-<%= message_type %>"><%= message %></div>
+	    <% end %>
+	</div>
 
 	<%= yield %>
 

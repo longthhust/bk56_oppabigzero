@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>オーナー:</strong>
+  <%= @question.user.email %>
+</p>
+
+<p>
+  <strong>タイトル:</strong>
+  <%= @question.title %>
+</p>
+
+<p>
+  <strong>内容:</strong>
+  <%= @question.content %>
+</p>
+
+<% if (current_user == @question.user) %>
+	<%= link_to '編集', edit_question_path(@question) %> |
+<% end %>
+<%= link_to '戻る', questions_path %>
