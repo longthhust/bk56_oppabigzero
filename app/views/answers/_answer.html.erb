@@ -1,0 +1,13 @@
+ <tr>
+    <td><%= answer.user.email %></td>
+    <td><%= answer.content %></td>
+    <td><%= link_to '表示', [@question, answer] %></td>
+    <% if (current_user == answer.user) %>
+      <td><%= link_to '編集', edit_question_answer_path(@question, answer) %></td>
+      <td><%= link_to '削除', [@question, answer], method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
+    <% else %>
+      <td></td>
+      <td></td>
+    <% end %>
+    <td>Posted <%= time_ago_in_words(answer.created_at) %> ago.</td>
+  </tr>

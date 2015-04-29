@@ -1,0 +1,25 @@
+<%= form_for([@question, @answer]) do |f| %>
+  <% if @answer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@answer.errors.count, "error") %> prohibited this answer from being saved:</h2>
+
+      <ul>
+      <% @answer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <strong>質問:</strong>
+    <%= @answer.question.title%><br/>
+    <strong>内容:</strong>
+    <%= @answer.question.content%><br/>
+    <%= f.label "回答" %><br>
+    <%= f.text_area :content %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

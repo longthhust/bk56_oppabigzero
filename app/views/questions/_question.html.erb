@@ -1,0 +1,10 @@
+ <tr>
+    <td><%= question.user.email %></td>
+    <td><%= question.title %></td>
+    <td><%= question.content %></td>
+    <td><%= link_to '表示', question %></td>
+    <% if (current_user == question.user) %>
+      <td><%= link_to '編集', edit_question_path(question) %></td>
+      <td><%= link_to '削除', question, method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
+    <% end %>
+  </tr>

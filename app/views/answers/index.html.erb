@@ -1,0 +1,35 @@
+<h1>質問</h1>
+<p>
+  <strong>オーナー:</strong>
+  <%= @question.user.email %>
+</p>
+
+<p>
+  <strong>タイトル:</strong>
+  <%= @question.title %>
+</p>
+
+<p>
+  <strong>内容:</strong>
+  <%= @question.content %>
+</p>
+
+<h1>回答の一覧</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>オーナー</th>
+      <th>内容</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render @answers %> 
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '回答する', new_question_answer_path(@question) %>
